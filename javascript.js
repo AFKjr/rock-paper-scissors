@@ -1,12 +1,12 @@
 // Test hello, world for console
 console.log("Hello, World");
 
+//Set global variables to keep score
 let humanScore = 0;
 let computerScore = 0;
 
 // Getting computer choice
 function getComputerChoice() {
-    
     if (Math.random() < 0.33) {
         return "SCISSORS";
     } else if (Math.random() < 0.66) {
@@ -15,15 +15,11 @@ function getComputerChoice() {
         return "PAPER"};
 }
 
-//console.log(getComputerChoice())
-
 //Getting human choice
 function getHumanChoice() {
     let userInput = prompt("Please enter rock, paper, or scissors");
     return userInput;
 }
-
-//console.log(getHumanChoice())
 
 //Single Round Logic
 function playRound(humanChoice, computerChoice) {
@@ -63,7 +59,37 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-//Function to play 5 rounds
+const rock = document.getElementById("rock");
+rock.addEventListener("click", playRockRound);
+
+const paper = document.getElementById("paper");
+paper.addEventListener("click", playPaperRound);
+
+const scissors = document.getElementById("scissors");
+scissors.addEventListener("click", playScissorsRound);
+
+function playRockRound() {
+    let computerFirstChoice = getComputerChoice();
+    let roundResultText = playRound("ROCK", computerFirstChoice);
+    const roundResult = document.getElementById("round-result");
+    roundResult.textContent = roundResultText;
+}
+
+function playPaperRound() {
+    let computerFirstChoice = getComputerChoice();
+    let roundResultText = playRound("PAPER", computerFirstChoice);
+    const roundResult = document.getElementById("round-result");
+    roundResult.textContent = roundResultText;
+}
+
+function playScissorsRound() {
+    let computerFirstChoice = getComputerChoice();
+    let roundResultText = playRound("SCISSORS", computerFirstChoice);
+    const roundResult = document.getElementById("round-result");
+    roundResult.textContent = roundResultText;
+}
+
+/*Function to play 5 rounds
 function playGame() {
     for (let i = 0; i < 5; i++) {
         const humanSelection = getHumanChoice();
@@ -76,4 +102,4 @@ function playGame() {
     console.log(`Final score is ${humanScore} for you, and ${computerScore} for the AI!`);
 }
 
-playGame();
+playGame();*/
