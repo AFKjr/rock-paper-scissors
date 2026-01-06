@@ -1,9 +1,7 @@
-// Test hello, world for console
-console.log("Hello, World");
-
 //Set global variables to keep score
 let humanScore = 0;
 let computerScore = 0;
+let roundsPlayed = 0;
 
 // Getting computer choice
 function getComputerChoice() {
@@ -13,12 +11,6 @@ function getComputerChoice() {
         return "ROCK";
     } else {
         return "PAPER"};
-}
-
-//Getting human choice
-function getHumanChoice() {
-    let userInput = prompt("Please enter rock, paper, or scissors");
-    return userInput;
 }
 
 //Single Round Logic
@@ -59,6 +51,7 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+//Button Setup
 const rock = document.getElementById("rock");
 rock.addEventListener("click", playRockRound);
 
@@ -68,6 +61,7 @@ paper.addEventListener("click", playPaperRound);
 const scissors = document.getElementById("scissors");
 scissors.addEventListener("click", playScissorsRound);
 
+//logic for when user presses Rock
 function playRockRound() {
     let computerFirstChoice = getComputerChoice();
     let roundResultText = playRound("ROCK", computerFirstChoice);
@@ -75,9 +69,24 @@ function playRockRound() {
     roundResult.textContent = roundResultText;
     
     const currentScore = document.getElementById("current-score");
-    currentScore.textContent = `The curent score is ${humanScore} to ${computerScore}!`
+    currentScore.textContent = `The current score is ${humanScore} to ${computerScore}!`
+
+    roundsPlayed++;
+
+    const winner = document.getElementById("winner");
+
+    if (roundsPlayed === 5) {
+        if (humanScore < computerScore) {
+            winner.textContent = `The winner is the AI with ${computerScore} points! GG's`;
+         }else if (humanScore > computerScore) {
+            winner.textContent = `You are the winner with ${humanScore} points! GG's`;
+         }else{
+            winner.textContent = "The game ends in a tie! Try again!";
+         }
+    }
 }
 
+//Function for when user choooses Paper
 function playPaperRound() {
     let computerFirstChoice = getComputerChoice();
     let roundResultText = playRound("PAPER", computerFirstChoice);
@@ -85,9 +94,24 @@ function playPaperRound() {
     roundResult.textContent = roundResultText;
 
     const currentScore = document.getElementById("current-score");
-    currentScore.textContent = `The curent score is ${humanScore} to ${computerScore}!`
+    currentScore.textContent = `The current score is ${humanScore} to ${computerScore}!`
+
+    roundsPlayed++;
+
+    const winner = document.getElementById("winner");
+
+    if (roundsPlayed === 5) {
+        if (humanScore < computerScore) {
+            winner.textContent = `The winner is the AI with ${computerScore} points! GG's`;
+         }else if (humanScore > computerScore) {
+            winner.textContent = `You are the winner with ${humanScore} points! GG's`;
+         }else{
+            winner.textContent = "The game ends in a tie! Try again!";
+         }
+    }
 }
 
+//Function for when user chooses Scissors
 function playScissorsRound() {
     let computerFirstChoice = getComputerChoice();
     let roundResultText = playRound("SCISSORS", computerFirstChoice);
@@ -95,20 +119,20 @@ function playScissorsRound() {
     roundResult.textContent = roundResultText;
 
     const currentScore = document.getElementById("current-score");
-    currentScore.textContent = `The curent score is ${humanScore} to ${computerScore}!`
-}
+    currentScore.textContent = `The current score is ${humanScore} to ${computerScore}!`
 
-/*Function to play 5 rounds
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        console.log(playRound(humanSelection, computerSelection));
-        console.log(`Your score is ${humanScore} and the CPU score is ${computerScore}`);
+    roundsPlayed++;
+
+    const winner = document.getElementById("winner");
+
+    if (roundsPlayed === 5) {
+        if (humanScore < computerScore) {
+            winner.textContent = `The winner is the AI with ${computerScore} points! GG's`;
+         }else if (humanScore > computerScore) {
+            winner.textContent = `You are the winner with ${humanScore} points! GG's`;
+         }else{
+            winner.textContent = "The game ends in a tie! Try again!";
+         }
     }
-    
-    console.log("5 games have been played! GG!");
-    console.log(`Final score is ${humanScore} for you, and ${computerScore} for the AI!`);
 }
 
-playGame();*/
