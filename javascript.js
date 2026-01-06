@@ -73,6 +73,9 @@ function playRockRound() {
     let roundResultText = playRound("ROCK", computerFirstChoice);
     const roundResult = document.getElementById("round-result");
     roundResult.textContent = roundResultText;
+    
+    const currentScore = document.getElementById("current-score");
+    currentScore.textContent = `The curent score is ${humanScore} to ${computerScore}!`
 }
 
 function playPaperRound() {
@@ -80,6 +83,9 @@ function playPaperRound() {
     let roundResultText = playRound("PAPER", computerFirstChoice);
     const roundResult = document.getElementById("round-result");
     roundResult.textContent = roundResultText;
+
+    const currentScore = document.getElementById("current-score");
+    currentScore.textContent = `The curent score is ${humanScore} to ${computerScore}!`
 }
 
 function playScissorsRound() {
@@ -87,6 +93,9 @@ function playScissorsRound() {
     let roundResultText = playRound("SCISSORS", computerFirstChoice);
     const roundResult = document.getElementById("round-result");
     roundResult.textContent = roundResultText;
+
+    const currentScore = document.getElementById("current-score");
+    currentScore.textContent = `The curent score is ${humanScore} to ${computerScore}!`
 }
 
 /*Function to play 5 rounds
